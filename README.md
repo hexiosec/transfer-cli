@@ -8,10 +8,25 @@ Transfer command line interface
 
 <!-- toc -->
 * [Hexiosec Transfer CLI](#hexiosec-transfer-cli)
+* [Installation](#installation)
 * [Usage](#usage)
-* [Getting Started](#getting-started)
+* [CLI Configuration](#cli-configuration)
 * [Commands](#commands)
 <!-- tocstop -->
+
+# Installation
+
+Update your ~/.npmrc to use GitHub Packages for the `@hexiosec` namespace:
+
+```
+@hexiosec:registry=https://npm.pkg.github.com
+```
+
+If you have not already configured authentication for the GitHub Package registry, create a GitHub Personal Access Token (classic) and add it to your ~/.npmrc, using https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages#authenticating-to-github-packages
+
+```
+//npm.pkg.github.com/:_authToken=YOUR_AUTH_TOKEN
+```
 
 # Usage
 
@@ -21,7 +36,7 @@ $ npm install -g @hexiosec/transfer-cli
 $ hxtransfer COMMAND
 running command...
 $ hxtransfer (--version)
-@hexiosec/transfer-cli/0.0.3 darwin-arm64 node-v18.20.6
+@hexiosec/transfer-cli/0.0.4 darwin-arm64 node-v18.20.6
 $ hxtransfer --help [COMMAND]
 USAGE
   $ hxtransfer COMMAND
@@ -29,19 +44,7 @@ USAGE
 ```
 <!-- usagestop -->
 
-# Getting Started
-
-## Installation
-
-Update your ~/.npmrc to use GitHub Packages for the `@hexiosec` namespace:
-
-```
-@hexiosec:registry=https://npm.pkg.github.com
-```
-
-See [Usage](#usage) to install the package globally and run commands.
-
-## Configuration
+# CLI Configuration
 
 1. Go to [My Account](https://transfer.hexiosec.com/account) in Hexiosec Transfer.
 2. Under **Create a new API Key** add a description and choose a validity, then click **Create**.
@@ -76,7 +79,7 @@ DESCRIPTION
   Show current configuration.
 ```
 
-_See code: [src/commands/config/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.3/src/commands/config/index.ts)_
+_See code: [src/commands/config/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.4/src/commands/config/index.ts)_
 
 ## `hxtransfer help [COMMAND]`
 
@@ -116,7 +119,7 @@ DESCRIPTION
   List active transfers.
 ```
 
-_See code: [src/commands/send/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.3/src/commands/send/index.ts)_
+_See code: [src/commands/send/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.4/src/commands/send/index.ts)_
 
 ## `hxtransfer send file [FILES]`
 
@@ -166,7 +169,7 @@ ALIASES
   $ hxtransfer send file
 ```
 
-_See code: [src/commands/send/files.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.3/src/commands/send/files.ts)_
+_See code: [src/commands/send/files.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.4/src/commands/send/files.ts)_
 
 ## `hxtransfer send message MESSAGE`
 
@@ -197,7 +200,7 @@ ALIASES
   $ hxtransfer send msg
 ```
 
-_See code: [src/commands/send/message.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.3/src/commands/send/message.ts)_
+_See code: [src/commands/send/message.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.4/src/commands/send/message.ts)_
 
 ## `hxtransfer send msg MESSAGE`
 
