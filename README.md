@@ -25,7 +25,9 @@ Update your ~/.npmrc to use GitHub Packages for the `@hexiosec` namespace:
 @hexiosec:registry=https://npm.pkg.github.com
 ```
 
-If you have not already configured authentication for the GitHub Package registry, create a GitHub Personal Access Token (classic) and add it to your ~/.npmrc, using the instructions in [Authenticating to GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages#authenticating-to-github-packages)
+If you have not already configured authentication for the GitHub Package registry, create a GitHub Personal Access Token (classic) and add it to your ~/.npmrc, using the instructions in [Authenticating to GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages#authenticating-to-github-packages).
+
+This is done in GitHub from [Settings > tokens](https://github.com/settings/tokens), and needs, at a minimum, the `read:packages` scope.
 
 ```
 //npm.pkg.github.com/:_authToken=YOUR_AUTH_TOKEN
