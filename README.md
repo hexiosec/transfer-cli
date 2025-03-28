@@ -39,7 +39,7 @@ $ npm install -g @hexiosec/transfer-cli
 $ hxtransfer COMMAND
 running command...
 $ hxtransfer (--version)
-@hexiosec/transfer-cli/0.0.5 darwin-arm64 node-v18.20.6
+@hexiosec/transfer-cli/0.0.6 darwin-arm64 node-v18.20.6
 $ hxtransfer --help [COMMAND]
 USAGE
   $ hxtransfer COMMAND
@@ -69,14 +69,35 @@ USAGE
 # Commands
 
 <!-- commands -->
+* [`hxtransfer auth`](#hxtransfer-auth)
 * [`hxtransfer config`](#hxtransfer-config)
 * [`hxtransfer help [COMMAND]`](#hxtransfer-help-command)
+* [`hxtransfer request ID`](#hxtransfer-request-id)
+* [`hxtransfer request create SUBJECT`](#hxtransfer-request-create-subject)
+* [`hxtransfer request download ID [DESTINATION]`](#hxtransfer-request-download-id-destination)
+* [`hxtransfer request files ID`](#hxtransfer-request-files-id)
+* [`hxtransfer request list`](#hxtransfer-request-list)
 * [`hxtransfer send`](#hxtransfer-send)
-* [`hxtransfer send file [FILES]`](#hxtransfer-send-file-files)
 * [`hxtransfer send files [FILES]`](#hxtransfer-send-files-files)
 * [`hxtransfer send message MESSAGE`](#hxtransfer-send-message-message)
-* [`hxtransfer send msg MESSAGE`](#hxtransfer-send-msg-message)
 * [`hxtransfer version`](#hxtransfer-version)
+
+## `hxtransfer auth`
+
+Show authentication information.
+
+```
+USAGE
+  $ hxtransfer auth [--json]
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Show authentication information.
+```
+
+_See code: [src/commands/auth.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/auth.ts)_
 
 ## `hxtransfer config`
 
@@ -93,7 +114,7 @@ DESCRIPTION
   Show current configuration.
 ```
 
-_See code: [src/commands/config/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.5/src/commands/config/index.ts)_
+_See code: [src/commands/config/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/config/index.ts)_
 
 ## `hxtransfer help [COMMAND]`
 
@@ -115,6 +136,135 @@ DESCRIPTION
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v6.2.27/src/commands/help.ts)_
 
+## `hxtransfer request ID`
+
+Show details of an existing sharing request.
+
+```
+USAGE
+  $ hxtransfer request ID [--json]
+
+ARGUMENTS
+  ID  Public ID
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Show details of an existing sharing request.
+
+ALIASES
+  $ hxtransfer req
+  $ hxtransfer reqs
+  $ hxtransfer requests
+```
+
+_See code: [src/commands/request/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/request/index.ts)_
+
+## `hxtransfer request create SUBJECT`
+
+Create a new sharing request.
+
+```
+USAGE
+  $ hxtransfer request create SUBJECT [--json] [-e <value>]
+
+ARGUMENTS
+  SUBJECT  Subject
+
+FLAGS
+  -e, --exp=<value>  Expiry date (format: yyyy/MM/dd HH:mm)
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Create a new sharing request.
+
+ALIASES
+  $ hxtransfer req create
+  $ hxtransfer reqs create
+  $ hxtransfer requests create
+```
+
+_See code: [src/commands/request/create.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/request/create.ts)_
+
+## `hxtransfer request download ID [DESTINATION]`
+
+Download received files from an existing sharing request.
+
+```
+USAGE
+  $ hxtransfer request download ID [DESTINATION] [--json]
+
+ARGUMENTS
+  ID           Public ID
+  DESTINATION  [default: .] Destination folder
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Download received files from an existing sharing request.
+
+ALIASES
+  $ hxtransfer req download
+  $ hxtransfer reqs download
+  $ hxtransfer requests download
+  $ hxtransfer req dl
+  $ hxtransfer reqs dl
+  $ hxtransfer requests dl
+```
+
+_See code: [src/commands/request/download.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/request/download.ts)_
+
+## `hxtransfer request files ID`
+
+Show received files of an existing sharing request.
+
+```
+USAGE
+  $ hxtransfer request files ID [--json]
+
+ARGUMENTS
+  ID  Public ID
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Show received files of an existing sharing request.
+
+ALIASES
+  $ hxtransfer req files
+  $ hxtransfer reqs files
+  $ hxtransfer requests files
+```
+
+_See code: [src/commands/request/files.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/request/files.ts)_
+
+## `hxtransfer request list`
+
+List active requests.
+
+```
+USAGE
+  $ hxtransfer request list [--json]
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List active requests.
+
+ALIASES
+  $ hxtransfer req list
+  $ hxtransfer reqs list
+  $ hxtransfer requests list
+```
+
+_See code: [src/commands/request/list.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/request/list.ts)_
+
 ## `hxtransfer send`
 
 List active transfers.
@@ -133,31 +283,7 @@ DESCRIPTION
   List active transfers.
 ```
 
-_See code: [src/commands/send/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.5/src/commands/send/index.ts)_
-
-## `hxtransfer send file [FILES]`
-
-Send one or more files.
-
-```
-USAGE
-  $ hxtransfer send file [FILES...] [--json] [-c <value>] [-d <value>] [-e <value>] [--generate-password]
-
-FLAGS
-  -c, --count=<value>      [default: 5] Maximum download count
-  -d, --desc=<value>       [default: Secure Files 27/03/2025] Transfer description
-  -e, --exp=<value>        [default: 7] Expiry duration (days)
-  --generate-password
-
-GLOBAL FLAGS
-  --json  Format output as json.
-
-DESCRIPTION
-  Send one or more files.
-
-ALIASES
-  $ hxtransfer send file
-```
+_See code: [src/commands/send/index.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/send/index.ts)_
 
 ## `hxtransfer send files [FILES]`
 
@@ -168,9 +294,9 @@ USAGE
   $ hxtransfer send files [FILES...] [--json] [-c <value>] [-d <value>] [-e <value>] [--generate-password]
 
 FLAGS
-  -c, --count=<value>      [default: 5] Maximum download count
-  -d, --desc=<value>       [default: Secure Files 27/03/2025] Transfer description
-  -e, --exp=<value>        [default: 7] Expiry duration (days)
+  -c, --count=<value>      Maximum download count
+  -d, --desc=<value>       [default: Secure Files 28/03/2025] Transfer description
+  -e, --exp=<value>        Expiry duration (days)
   --generate-password
 
 GLOBAL FLAGS
@@ -183,7 +309,7 @@ ALIASES
   $ hxtransfer send file
 ```
 
-_See code: [src/commands/send/files.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.5/src/commands/send/files.ts)_
+_See code: [src/commands/send/files.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/send/files.ts)_
 
 ## `hxtransfer send message MESSAGE`
 
@@ -198,9 +324,9 @@ ARGUMENTS
   MESSAGE  Message body
 
 FLAGS
-  -c, --count=<value>      [default: 5] Maximum download count
-  -d, --desc=<value>       [default: Secure Message 27/03/2025] Transfer description
-  -e, --exp=<value>        [default: 7] Expiry duration (days)
+  -c, --count=<value>      Maximum download count
+  -d, --desc=<value>       [default: Secure Message 28/03/2025] Transfer description
+  -e, --exp=<value>        Expiry duration (days)
   -s, --subject=<value>    [default: Secure Message] Message subject
   --generate-password
 
@@ -214,36 +340,7 @@ ALIASES
   $ hxtransfer send msg
 ```
 
-_See code: [src/commands/send/message.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.5/src/commands/send/message.ts)_
-
-## `hxtransfer send msg MESSAGE`
-
-Send a secure message.
-
-```
-USAGE
-  $ hxtransfer send msg MESSAGE [--json] [-c <value>] [-d <value>] [-e <value>] [--generate-password] [-s
-    <value>]
-
-ARGUMENTS
-  MESSAGE  Message body
-
-FLAGS
-  -c, --count=<value>      [default: 5] Maximum download count
-  -d, --desc=<value>       [default: Secure Message 27/03/2025] Transfer description
-  -e, --exp=<value>        [default: 7] Expiry duration (days)
-  -s, --subject=<value>    [default: Secure Message] Message subject
-  --generate-password
-
-GLOBAL FLAGS
-  --json  Format output as json.
-
-DESCRIPTION
-  Send a secure message.
-
-ALIASES
-  $ hxtransfer send msg
-```
+_See code: [src/commands/send/message.ts](https://github.com/hexiosec/transfer-cli/blob/v0.0.6/src/commands/send/message.ts)_
 
 ## `hxtransfer version`
 
